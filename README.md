@@ -65,6 +65,6 @@ We see that for this specific system, partial pivoting computes a solution with 
 relative error of approximately 0.94, indicating almost no accuracy at all. Complete pivoting
 demonstrates perfect accuracy with no error, and successfully computes the exact solution. Increasing
 the size of n increases the error in the partial pivoting solution. Playing around with the matrix by hand,
-we can observe the rightmost column will accrue huge values in the bottom right corner after each row operation
-(elimination) providing a massive pivot at every step of the elimination process, exactly what we want to avoid
+we can observe that the rightmost column will accrue huge values in the bottom right corner after each row operation
+(elimination), providing a massive pivot at every step of the elimination process. This is exactly what we hope for, to minimize
 errors when dealing with floating point arithmetic.
