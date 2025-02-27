@@ -21,8 +21,8 @@ setting, running this code produces the following output:
 
 <img src="images/test_output.png" alt="test_output" width="350" height="350">
 
-Computing the system by hand, gives (x_1, x_2, x_3) = (-34/3, 19/6, -6), so all the 
-algorithms are accurate with a precision of 4 digits.
+Computing the system by hand gives (x_1, x_2, x_3) = (-34/3, 19/6, -6), so all the 
+algorithms are accurate for this example, with a precision of 4 digits.
 
 ### Comparing Accuracy
 Running **accuracy_comparisons.py** produces output similar to the following image. We are
