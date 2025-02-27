@@ -4,7 +4,8 @@
 within their programs to solve systems of linear equations (like ever, lol). It is extremely
 inefficient. I implemented the main algorithms with just basic nested lists to mimic
 how we could perform these computations by hand and make each step of the algorithms explicit.
-For practical purposes, you should really always use linear system solvers from NumPy or SciPy.
+For practical purposes, you should really always use linear system solvers from NumPy or SciPy. Here, I only used
+NumPy when computing the residual vectors, relative errors, and any norms.
 
 ### GE Algorithms
 We are exploring 3 types of Gaussian Elimination.
@@ -25,7 +26,9 @@ algorithms are accurate with a precision of 4 digits.
 
 ### Comparing Accuracy
 Running **accuracy_comparisons.py** produces output similar to the following image. We are
-producing random systems so results will vary every time, but the overall trends should remain.
+producing random systems so results will vary every time, but the overall trends should remain. We generate
+a random coefficient matrix A, and compute b (in the equation Ax = b) such that
+x_i = (-1)^{i+1}.
 
 <img src="images/accuracy_output.png" alt="accuracy_output" width="650" height="650">
 
@@ -49,4 +52,19 @@ between partial and complete pivoting for most systems in floating point arithme
 Hence, in most cases, the theoretical slight increase in numerical stability offered by complete pivoting 
 over its partial counterpart likely doesn't justify the increase in operation cost (2D search for the pivot
 vs. 1D search). For practical purposes partial pivoting is probably the best option, offering a balance
-between computational complexity and accuracy
+between computational complexity and accuracy.
+
+### Breaking Partial Pivoting
+The above analysis will almost always hold true, but there are still cases when we would want to
+use complete pivoting over partial pivoting. **breaking_partial_pivoting.py** produces a nonrandom matrix
+where complete pivoting is significantly more accurate. Running the program, we see:
+
+<img src="images/breaking_partial_pivoting.png" alt="breaking_partial_pivoting" width="350" height="350">
+
+We see that for this specific system, partial pivoting computes a solution with a very large
+relative error of approximately 0.94, indicating almost no accuracy at all. Complete pivoting
+demonstrates perfect accuracy with no error, and successfully computes the exact solution. Increasing
+the size of n increases the error in the partial pivoting solution. Playing around with the matrix by hand,
+we can observe the rightmost column will accrue huge values in the bottom right corner after each row operation
+(elimination) providing a massive pivot at every step of the elimination process, exactly what we want to avoid
+errors when dealing with floating point arithmetic.
