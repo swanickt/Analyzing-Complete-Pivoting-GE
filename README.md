@@ -59,7 +59,7 @@ The above analysis will almost always hold true, but there are still cases when 
 use complete pivoting over partial pivoting. **breaking_partial_pivoting.py** produces a nonrandom matrix
 where complete pivoting is significantly more accurate. Running the program, we see:
 
-<img src="images/breaking_partial_pivoting.png" alt="breaking_partial_pivoting" width="350" height="350">
+<img src="images/breaking_partial_pivoting.png" alt="breaking_partial_pivoting" width="450" height="350">
 
 We see that for this specific system, partial pivoting computes a solution with a very large
 relative error of approximately 0.94, indicating almost no accuracy at all. Complete pivoting
